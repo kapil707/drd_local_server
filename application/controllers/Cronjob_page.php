@@ -466,6 +466,7 @@ class Cronjob_page extends CI_Controller
 		echo $this->Excel_Model->staff_download_stock_and_sales_analysis_month("080","00",$id,"2023-05-01","2023-05-31","direct_download");
 	}
 	
+	
 	public function Corporate_monthly_report()
 	{
 		$time   = time();
