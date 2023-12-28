@@ -1026,15 +1026,15 @@ class Excel_Model extends CI_Model
 			
 			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount,$row->name);
 			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$rowCount,$row->pack);
-			//$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,$final_open);
-			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,$final_close);
+			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,$final_open);
+			//$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,$final_close);
 			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$rowCount,$purchase);
 			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount,$purchase_return);
 			$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,$sale);
 			$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount,$sale_return);
 			$objPHPExcel->getActiveSheet()->SetCellValue('H'.$rowCount,$other);
-			//$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,$final_close);
-			$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,$final_ans);
+			$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,$final_close);
+			//$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,$final_ans);
 			//$objPHPExcel->getActiveSheet()->getStyle('H'.$rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':I'.$rowCount)->applyFromArray($BStyle);
 			
@@ -1266,13 +1266,13 @@ class Excel_Model extends CI_Model
 			$return.= "<tr>";
 				$return.= "<td>$row->name</td>";
 				$return.= "<td>$row->pack</td>";
-				$return.= "<td>$final_close</td>";
+				$return.= "<td>$final_open</td>";
 				$return.= "<td>$purchase</td>";
 				$return.= "<td>$purchase_return</td>";
 				$return.= "<td>$sale</td>";
 				$return.= "<td>$sale_return</td>";
 				$return.= "<td>$other</td>";
-				$return.= "<td>$final_ans</td>";
+				$return.= "<td>$final_close</td>";
 			$return.= "</tr>";
 
 			
