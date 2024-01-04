@@ -289,7 +289,7 @@ class Exe01 extends CI_Controller
 		curl_setopt_array(
 			$curl,
 			array(
-				CURLOPT_URL =>'https://drdweb.co.in/exe01/exe02/download_order_in_sever',
+				CURLOPT_URL =>'https://drdweb.co.in/exe01/exe_drdweb/download_order_in_sever',
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_ENCODING => '',
 				CURLOPT_MAXREDIRS => 0,
@@ -370,7 +370,7 @@ class Exe01 extends CI_Controller
 			curl_setopt_array(
 			$curl1,
 				array(
-					CURLOPT_URL => 'https://drdweb.co.in/exe01/exe02/download_order_status_update',
+					CURLOPT_URL => 'https://drdweb.co.in/exe01/exe_drdweb/download_order_status_update',
 					CURLOPT_RETURNTRANSFER => true,
 					CURLOPT_ENCODING => '',
 					CURLOPT_MAXREDIRS => 0,
@@ -404,7 +404,7 @@ class Exe01 extends CI_Controller
 		curl_setopt_array(
 		$curl,
 			array(
-				CURLOPT_URL => 'https://drdweb.co.in/exe01/exe02/order_error_download',
+				CURLOPT_URL => 'https://drdweb.co.in/exe01/exe_drdweb/order_error_download',
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_ENCODING => '',
 				CURLOPT_MAXREDIRS => 0,
@@ -479,7 +479,7 @@ class Exe01 extends CI_Controller
 					curl_setopt_array(
 					$curl,
 						array(
-							CURLOPT_URL => 'https://drdweb.co.in/exe01/exe02/download_order_again',
+							CURLOPT_URL => 'https://drdweb.co.in/exe01/exe_drdweb/download_order_again',
 							CURLOPT_RETURNTRANSFER => true,
 							CURLOPT_ENCODING => '',
 							CURLOPT_MAXREDIRS => 0,
@@ -719,7 +719,7 @@ class Exe01 extends CI_Controller
 			curl_setopt_array(
 				$curl,
 				array(
-					CURLOPT_URL =>'https://drdweb.co.in/exe01/exe02/upload_order_to_gstvno',
+					CURLOPT_URL =>'https://drdweb.co.in/exe01/exe_drdweb/upload_order_to_gstvno',
 					CURLOPT_RETURNTRANSFER => true,
 					CURLOPT_ENCODING => '',
 					CURLOPT_MAXREDIRS => 0,
@@ -917,7 +917,7 @@ class Exe01 extends CI_Controller
 			curl_setopt_array(
 				$curl,
 				array(
-					CURLOPT_URL =>'https://drdweb.co.in/exe01/exe02/upload_medicine',
+					CURLOPT_URL =>'https://drdweb.co.in/exe01/exe_drdweb/upload_medicine',
 					CURLOPT_RETURNTRANSFER => true,
 					CURLOPT_ENCODING => '',
 					CURLOPT_MAXREDIRS => 0,
@@ -1095,7 +1095,7 @@ class Exe01 extends CI_Controller
 			curl_setopt_array(
 				$curl,
 				array(
-					CURLOPT_URL =>'https://drdweb.co.in/exe01/exe02/upload_chemist',
+					CURLOPT_URL =>'https://drdweb.co.in/exe01/exe_drdweb/upload_chemist',
 					CURLOPT_RETURNTRANSFER => true,
 					CURLOPT_ENCODING => '',
 					CURLOPT_MAXREDIRS => 0,

@@ -459,7 +459,7 @@ class Cronjob_page extends CI_Controller
 	}
 	
 	public function Corporate_monthly_report_test($id=""){
-		echo $this->Excel_Model->staff_download_stock_and_sales_analysis_month_html("080","00",$id,"2023-05-01","2023-05-31");
+		echo $this->Excel_Model->staff_download_stock_and_sales_analysis_month_html("080","00",$id,"2023-11-01","2023-11-30");
 	}
 
 	public function Corporate_monthly_report_test_download($id=""){
@@ -507,11 +507,12 @@ class Cronjob_page extends CI_Controller
 			
 			$file_name1 = $file_name2 = $file_name3 = "";
 			$file_name_1 = $file_name_2 = $file_name_3 = "";
-			if($row->stock_and_sales_analysis_daily_email=="1")
+			
+			/*if($row->stock_and_sales_analysis_daily_email=="1")
 			{
 				$file_name1  = $this->Excel_Model->staff_download_stock_and_sales_analysis_month($user_session,$user_division,$user_compcode,$from,$to,"cronjob_download");
 				$file_name_1 = "DRD-Sales-and-stock-report.xls";
-			}
+			}*/
 			
 			if($row->item_wise_report_monthly_email=="1")
 			{
