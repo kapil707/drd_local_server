@@ -890,6 +890,7 @@ class Excel_Model extends CI_Model
 			{	
 				if($rowCount!="7")
 				{
+					
 					$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount,"Total Value ($mydivision)");
 					$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,round($total_opening1,2));
 					$objPHPExcel->getActiveSheet()->SetCellValue('D'.$rowCount,round($total_purchase1,2));
