@@ -804,11 +804,13 @@ class Excel_Model extends CI_Model
 		->setCellValue('B6','Pack')
 		->setCellValue('C6','Opening')
 		->setCellValue('D6','Purchase')
-		->setCellValue('E6','Purchase Return')
-		->setCellValue('F6','Sale')
-		->setCellValue('G6','Sale Return')
-		->setCellValue('H6','Others')
-		->setCellValue('I6','Closing');
+		->setCellValue('E6','Purchase Free')
+		->setCellValue('F6','Purchase Return')
+		->setCellValue('G6','Sale')
+		->setCellValue('H6','Sale Free')
+		->setCellValue('I6','Sale Return')
+		->setCellValue('J6','Others')
+		->setCellValue('K6','Closing');
 		
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(30);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(8);
@@ -818,8 +820,10 @@ class Excel_Model extends CI_Model
 		$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(15);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
-		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(15);
-		
+		$objPHPExcel->getActiveSheet()->getColumnDimension('I')->setWidth(15);		
+		$objPHPExcel->getActiveSheet()->getColumnDimension('J')->setWidth(15);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('K')->setWidth(15);
+
 		$sheet = $objPHPExcel->getActiveSheet();
 		$sheet->setCellValueByColumnAndRow(0, 1, "D.R.DISTRIBUTORS PVT.LTD.");
 		$sheet->setCellValueByColumnAndRow(0, 2, "F2/6, OKHLA INDUSTRIAL AREA, PHASE 1, NEW DELHI 110020\nCIN : U51909DL2004PTC125295  GST No. : 07AABCD9532A1Z1");
@@ -828,11 +832,11 @@ class Excel_Model extends CI_Model
 		$sheet->setCellValueByColumnAndRow(0, 5, "COMPANY : $tbl_staffdetail->comp_altercode  [ $tbl_staffdetail->company_full_name ]");
 		$objPHPExcel->getActiveSheet()->getRowDimension('2')->setRowHeight(25);
 		$objPHPExcel->getActiveSheet()->getStyle('A2')->getAlignment()->setWrapText(true);
-		$sheet->mergeCells('A1:I1');
-		$sheet->mergeCells('A2:I2');
-		$sheet->mergeCells('A3:I3');
-		$sheet->mergeCells('A4:I4');
-		$sheet->mergeCells('A5:I5');
+		$sheet->mergeCells('A1:K1');
+		$sheet->mergeCells('A2:K2');
+		$sheet->mergeCells('A3:K3');
+		$sheet->mergeCells('A4:K4');
+		$sheet->mergeCells('A5:K5');
 		$sheet->getStyle('A1')->getAlignment()->applyFromArray(
 			array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,)
 		);
@@ -843,19 +847,19 @@ class Excel_Model extends CI_Model
 			array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,)
 		);
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A1:I1')->applyFromArray(array('font' => array('size' => 12,'bold' => FALSE,'name'  => 'Arial','color' => ['rgb' => '000000'],)));		
+		$objPHPExcel->getActiveSheet()->getStyle('A1:K1')->applyFromArray(array('font' => array('size' => 12,'bold' => FALSE,'name'  => 'Arial','color' => ['rgb' => '000000'],)));		
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A2:I2')->applyFromArray(array('font' => array('size' => 8,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '000000'],)));		
+		$objPHPExcel->getActiveSheet()->getStyle('A2:K2')->applyFromArray(array('font' => array('size' => 8,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '000000'],)));		
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A3:I3')->applyFromArray(array('font' => array('size' => 10,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '000000'],)));	
-		$objPHPExcel->getActiveSheet()->getStyle('A3:I3')->getFont()->setUnderline(true);		
+		$objPHPExcel->getActiveSheet()->getStyle('A3:K3')->applyFromArray(array('font' => array('size' => 10,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '000000'],)));	
+		$objPHPExcel->getActiveSheet()->getStyle('A3:K3')->getFont()->setUnderline(true);		
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A4:I4')->applyFromArray(array('font' => array('size' => 10,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '000000'],)));
+		$objPHPExcel->getActiveSheet()->getStyle('A4:K4')->applyFromArray(array('font' => array('size' => 10,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '000000'],)));
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A5:I5')->applyFromArray(array('font' => array('size' => 10,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '000000'],)));		
+		$objPHPExcel->getActiveSheet()->getStyle('A5:K5')->applyFromArray(array('font' => array('size' => 10,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '000000'],)));		
 		
 		$objPHPExcel->getActiveSheet()
-        ->getStyle('A6:I6')
+        ->getStyle('A6:K6')
         ->getFill()
         ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
         ->getStartColor()
@@ -868,8 +872,8 @@ class Excel_Model extends CI_Model
 			)
 		  )
 		);
-		$objPHPExcel->getActiveSheet()->getStyle('A6:I6')->applyFromArray($BStyle);
-		$objPHPExcel->getActiveSheet()->getStyle('A6:I6')->applyFromArray(array('font' => array('size' => 10,'bold' => TRUE,'name'  => 'Calibri','color' => ['rgb' => '000000'],)));
+		$objPHPExcel->getActiveSheet()->getStyle('A6:K6')->applyFromArray($BStyle);
+		$objPHPExcel->getActiveSheet()->getStyle('A6:K6')->applyFromArray(array('font' => array('size' => 10,'bold' => TRUE,'name'  => 'Calibri','color' => ['rgb' => '000000'],)));
 		
 		$myint_i = 0;
 		$query = $this->Corporate_Model->stock_and_sales_analysis($division,$compcode,$from,$to);
@@ -879,7 +883,7 @@ class Excel_Model extends CI_Model
 		$total_amt1 	= 0;
 		$fileok=0;
 		$mydivision = "";
-		$total_opening1 = $total_purchase1 = $total_sale1 = $total_sale_return1 = $total_other1 = $total_closing1 = 0;
+		$total_opening1 = $total_purchase1 = $total_purchase_free1 = $total_sale1 = $total_sale_free1 = $total_sale_return1 = $total_other1 = $total_closing1 = 0;
 		foreach($query as $row)
 		{	
 			if($row->division!=$mydivision)
@@ -889,134 +893,89 @@ class Excel_Model extends CI_Model
 					$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount,"Total Value ($mydivision)");
 					$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,round($total_opening1,2));
 					$objPHPExcel->getActiveSheet()->SetCellValue('D'.$rowCount,round($total_purchase1,2));
-					$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount,round($total_purchase_return1,2));
-					$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,round($total_sale1,2));
-					$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount,round($total_sale_return1,2));
-					$objPHPExcel->getActiveSheet()->SetCellValue('H'.$rowCount,round($total_other1,2));
-					$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,round($total_closing1,2));
+					$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount,round($total_purchase_free1,2));
+					$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,round($total_purchase_return1,2));
+					$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount,round($total_sale1,2));
+					$objPHPExcel->getActiveSheet()->SetCellValue('H'.$rowCount,round($total_sale_free1,2));
+					$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,round($total_sale_return1,2));
+					$objPHPExcel->getActiveSheet()->SetCellValue('J'.$rowCount,round($total_other1,2));
+					$objPHPExcel->getActiveSheet()->SetCellValue('K'.$rowCount,round($total_closing1,2));
 
 					$objPHPExcel->getActiveSheet()
-					->getStyle('A'.$rowCount.':I'.$rowCount)
+					->getStyle('A'.$rowCount.':K'.$rowCount)
 					->getFill()
 					->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
 					->getStartColor()
 					->setRGB('FDFE9F');
 
-					$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':I'.$rowCount)->applyFromArray($BStyle);
+					$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':K'.$rowCount)->applyFromArray($BStyle);
 
-					$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':I'.$rowCount)->applyFromArray(array('font' => array('size' => 9,'bold' => TRUE,'name'  => 'Calibri','color' => ['rgb' => '0000FF'],)));
+					$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':K'.$rowCount)->applyFromArray(array('font' => array('size' => 9,'bold' => TRUE,'name'  => 'Calibri','color' => ['rgb' => '0000FF'],)));
 					$rowCount++;
 				}
 				
-				$sheet->mergeCells('A'.$rowCount.':I'.$rowCount);
+				$sheet->mergeCells('A'.$rowCount.':K'.$rowCount);
 				$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount,"Division : ".$row->division);
 				
-				$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':I'.$rowCount)->applyFromArray(array('font' => array('size' => 11,'bold' => true,'name'  => 'Calibri','color' => ['rgb' => 'ff0000'],)));
+				$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':K'.$rowCount)->applyFromArray(array('font' => array('size' => 11,'bold' => true,'name'  => 'Calibri','color' => ['rgb' => 'ff0000'],)));
 				$rowCount++;
 				
 				$mydivision = $row->division;
 				
-				$total_opening1 = $total_purchase1 = $total_sale1 = $total_sale_return1 = $total_other1 = $total_closing1 = 0;
+				$total_opening1 = $total_purchase1 = $total_purchase_free1 = $total_sale1 = $total_sale_free1 = $total_sale_return1 = $total_other1 = $total_closing1 = 0;
 			}
 			
 			$fileok=1;
 			
 			$itemc = $row->code;
 			
-			$open_b		= round($row->open_b);
+			$open_b2	= round($row->open_b2);
 			$TempOpqty	= round($row->TempOpqty);
 			$clqty		= round($row->clqty);
+			$opqty		= round($row->opqty);
 			$TempClqty	= round($row->TempClqty);
 			
-			/*if($dbchange=="0"){
-				$final_open  = $clqty - ($open_b);
-				$final_close = $clqty;
-			}*/
-			
-			
 			$purchase 		= round($row->purchase);
-			$sale 			= round($row->sale);	
+			$purchase_free 	= round($row->purchase_free);
+			$sale 			= round($row->sale);
+			$sale_free 		= round($row->sale_free);	
 			$sale_return 	= round($row->sale_return);
 			$other1			= round($row->other1);
 			$other2 		= round($row->other2);
-			
-			$total_other = 0;
-			if($row->other1_1=="")
-			{
-				$row->other1_1 = 0;
+
+			// $sale2 = $sale - $sale_return;
+			// $purchase2 = $purchase;
+
+			$final_close = $clqty - $open_b2;
+			$final_open  = $final_close + ($sale-$purchase) - $sale_return;
+			if($purchase_free){
+				$r = $purchase_free - $sale_free;
+				$final_open  = $final_open - $r;
 			}
-			
-			if($row->other2_1=="")
-			{
-				$row->other2_1 = 0;
-			}
-			
+
 			$other = 0;			
 			if($other2!=0)
 			{		
-				$other 			= $other1 - $other2;
-				$total_other 	= $row->other1_1;
+				$other 			= $other - $other2;
+				$total_other 	= $row->other2_1;
+				if($opqty==0){
+					$other 			= $other2;
+					$total_other 	= $row->other2_1;
+				}
 			}
 			else{
-				$other 			= 0 - $other1;
-				$total_other 	= 0 - $row->other1_1;
+				$other 			= $other - $other1;
+				$total_other 	= $row->other1_1;
+				if($opqty==0){
+					$other 			= $other1;
+					$total_other 	= $row->other1_1;
+				}
 			}
-			
-			
-				$final_open  = $TempOpqty - ($open_b);
-				$final_close = $TempOpqty;
-				
-				/*
-				$sale_return 	= round($row->sale_return);
-				if($sale_return==""){
-					$sale_return = "0";
-				}
-				$purchase 		= round($row->purchase);
-				if($purchase==""){
-					$purchase = "0";
-					$other = abs($other); //jab purchase 0  ha to other nagtive nahi hoga
-				}
-				$sale 			= round($row->sale);
-				if($sale==""){
-					$sale = "0";
-				}
-				$final_close 	= $TempOpqty;	
-				
-				$purchase_return = round($row->purchase_return);
-				if($purchase_return==""){
-					$purchase_return = "0";
-				}
 
-				$final_open  	= ($TempOpqty) - ($purchase - $sale - $purchase_return) -  ($sale_return) - ($other);*/
-			
-			
-			if($row->purchase1=="")
-			{
-				$row->purchase1 = 0;
-			}
-			$total_purchase = ($row->purchase1);	
-			
-			if($row->sale1=="")
-			{
-				$row->sale1 = 0;
-			}
-			$total_sale = ($row->sale1);
-			
-			if($row->sale_return1=="")
-			{
-				$row->sale_return1 = 0;
-			}
-			$total_sale_return = ($row->sale_return1);
-			
-			if($purchase=="")
-			{
-				$purchase = 0;
-			}
-			
-			
-			if($closing1=="0")
-			{
-				$closing 	= 0;
+			$final_open  = $final_open  - $other;
+
+			if($final_open==0){
+				continue;
 			}
 			
 			$total_opening = $final_open  * $row->costrate;
@@ -1027,22 +986,25 @@ class Excel_Model extends CI_Model
 			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount,$row->name);
 			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$rowCount,$row->pack);
 			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,$final_open);
-			//$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,$final_close);
 			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$rowCount,$purchase);
-			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount,$purchase_return);
-			$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,$sale);
-			$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount,$sale_return);
-			$objPHPExcel->getActiveSheet()->SetCellValue('H'.$rowCount,$other);
-			$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,$final_close);
+			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount,$purchase_free);
+			$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,$purchase_return);
+			$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount,$sale);
+			$objPHPExcel->getActiveSheet()->SetCellValue('H'.$rowCount,$sale_free);
+			$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,$sale_return);
+			$objPHPExcel->getActiveSheet()->SetCellValue('J'.$rowCount,$other);
+			$objPHPExcel->getActiveSheet()->SetCellValue('K'.$rowCount,$final_close);
 			//$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,$final_ans);
 			//$objPHPExcel->getActiveSheet()->getStyle('H'.$rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':I'.$rowCount)->applyFromArray($BStyle);
+			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':K'.$rowCount)->applyFromArray($BStyle);
 			
-			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':I'.$rowCount)->applyFromArray(array('font' => array('size' => 8,'bold' => false,'name'  => 'Calibri','color' => ['rgb' => '000000'],)));
+			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':K'.$rowCount)->applyFromArray(array('font' => array('size' => 8,'bold' => false,'name'  => 'Calibri','color' => ['rgb' => '000000'],)));
 			
 			$total_opening1 	= $total_opening1 	+ $total_opening;
 			$total_purchase1 	= $total_purchase1 	+ $total_purchase;
+			$total_purchase_free1 = $total_purchase_free1 + $total_purchase_free;
 			$total_sale1 		= $total_sale1 		+ $total_sale;
+			$total_sale_free1 	= $total_sale_free1 + $total_sale_free;
 			$total_sale_return1 = $total_sale_return1+ $total_sale_return;
 			$total_other1 		= $total_other1 	+ $total_other;
 			$total_closing1 	= $total_closing1 	+ $total_closing;
@@ -1050,7 +1012,9 @@ class Excel_Model extends CI_Model
 			/**************full total*******************************/
 			$total_opening1_f 		= $total_opening1_f 	+ $total_opening;
 			$total_purchase1_f		= $total_purchase1_f 	+ $total_purchase;
+			$total_purchase_free1_f	= $total_purchase_free1_f + $total_purchase_free;
 			$total_sale1_f			= $total_sale1_f 		+ $total_sale;
+			$total_sale_free1_f		= $total_sale_free1_f 	+ $total_sale_free;
 			$total_sale_return1_f 	= $total_sale_return1_f	+ $total_sale_return;
 			$total_other1_f 		= $total_other1_f 		+ $total_other;
 			$total_closing1_f 		= $total_closing1_f 	+ $total_closing;
@@ -1061,22 +1025,23 @@ class Excel_Model extends CI_Model
 		$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount,"Total Value ($row->division)");
 		$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,round($total_opening1,2));
 		$objPHPExcel->getActiveSheet()->SetCellValue('D'.$rowCount,round($total_purchase1,2));
-		$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount,round($total_purchase_retrun1,2));
-		$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,round($total_sale1,2));
-		$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount,round($total_sale_return1,2));
-		$objPHPExcel->getActiveSheet()->SetCellValue('H'.$rowCount,round($total_other1,2));
-		$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,round($total_closing1,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('H'.$rowCount,round($total_purchase_free1,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,round($total_purchase_retrun1,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount,round($total_sale1,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('H'.$rowCount,round($total_sale_free1,2));		$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,round($total_sale_return1,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('J'.$rowCount,round($total_other1,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('K'.$rowCount,round($total_closing1,2));
 
 		$objPHPExcel->getActiveSheet()
-		->getStyle('A'.$rowCount.':I'.$rowCount)
+		->getStyle('A'.$rowCount.':K'.$rowCount)
 		->getFill()
 		->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
 		->getStartColor()
 		->setRGB('FDFE9F');
 
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':I'.$rowCount)->applyFromArray($BStyle);
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':K'.$rowCount)->applyFromArray($BStyle);
 
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':I'.$rowCount)->applyFromArray(array('font' => array('size' => 9,'bold' => TRUE,'name'  => 'Calibri','color' => ['rgb' => '0000FF'],)));
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':K'.$rowCount)->applyFromArray(array('font' => array('size' => 9,'bold' => TRUE,'name'  => 'Calibri','color' => ['rgb' => '0000FF'],)));
 		$rowCount++;
 		
 		/******full total***********************/
@@ -1084,22 +1049,24 @@ class Excel_Model extends CI_Model
 		$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount,"Total :");
 		$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,round($total_opening1_f,2));
 		$objPHPExcel->getActiveSheet()->SetCellValue('D'.$rowCount,round($total_purchase1_f,2));
-		$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount,round(0,2));
-		$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,round($total_sale1_f,2));
-		$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount,round($total_sale_return1_f,2));
-		$objPHPExcel->getActiveSheet()->SetCellValue('H'.$rowCount,round($total_other1_f,2));
-		$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,round($total_closing1_f,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount,round($total_purchase_free1_f,2));		
+		$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,round($total_purchase_retrun1_f,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount,round($total_sale1_f,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('H'.$rowCount,round($total_sale_free1_f,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('I'.$rowCount,round($total_sale_return1_f,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('J'.$rowCount,round($total_other1_f,2));
+		$objPHPExcel->getActiveSheet()->SetCellValue('K'.$rowCount,round($total_closing1_f,2));
 		
 		$objPHPExcel->getActiveSheet()
-        ->getStyle('A'.$rowCount.':I'.$rowCount)
+        ->getStyle('A'.$rowCount.':K'.$rowCount)
         ->getFill()
         ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
         ->getStartColor()
         ->setRGB('FDFE9F');
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':I'.$rowCount)->applyFromArray($BStyle);
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':K'.$rowCount)->applyFromArray($BStyle);
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':I'.$rowCount)->applyFromArray(array('font' => array('size' => 9,'bold' => TRUE,'name'  => 'Calibri','color' => ['rgb' => '973939'],)));
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':K'.$rowCount)->applyFromArray(array('font' => array('size' => 9,'bold' => TRUE,'name'  => 'Calibri','color' => ['rgb' => '973939'],)));
 		
 		$name = "Sales And Stock Report";
 		if($download_type=="direct_download")
@@ -1168,8 +1135,10 @@ class Excel_Model extends CI_Model
 			$return.= "<th>Pack</th>";
 			$return.= "<th>Opening</th>";
 			$return.= "<th>Purchase</th>";
+			$return.= "<th>Purchase Free</th>";
 			$return.= "<th>Purchase Return</th>";
 			$return.= "<th>Sale</th>";
+			$return.= "<th>Sale Free</th>";
 			$return.= "<th>Sale Return</th>";
 			$return.= "<th>Others</th>";
 			$return.= "<th>Closing</th>";
@@ -1179,7 +1148,7 @@ class Excel_Model extends CI_Model
 		{	
 			if($row->division!=$mydivision)
 			{	
-				$return.= "<tr><td colspan='9'>division : $row->division </td></tr>";
+				$return.= "<tr><td colspan='11'>division : $row->division </td></tr>";
 				
 				$mydivision = $row->division;
 				
@@ -1190,18 +1159,57 @@ class Excel_Model extends CI_Model
 			
 			$itemc = $row->code;
 			
-			$open_b		= round($row->open_b);
+			$open_b2	= round($row->open_b2);
 			$TempOpqty	= round($row->TempOpqty);
 			$clqty		= round($row->clqty);
+			$opqty		= round($row->opqty);
 			$TempClqty	= round($row->TempClqty);
 			
 			$purchase 		= round($row->purchase);
-			$sale 			= round($row->sale);	
+			$purchase_free 	= round($row->purchase_free);
+			$sale 			= round($row->sale);
+			$sale_free 		= round($row->sale_free);	
 			$sale_return 	= round($row->sale_return);
 			$other1			= round($row->other1);
 			$other2 		= round($row->other2);
+
+			// $sale2 = $sale - $sale_return;
+			// $purchase2 = $purchase;
+
+			$final_close = $clqty - $open_b2;
+			$final_open  = $final_close + ($sale-$purchase) - $sale_return;
+			if($purchase_free){
+				$r = $purchase_free - $sale_free;
+				$final_open  = $final_open - $r;
+			}
+
+			$other = 0;			
+			if($other2!=0)
+			{		
+				$other 			= $other - $other2;
+				$total_other 	= $row->other2_1;
+				if($opqty==0){
+					$other 			= $other2;
+					$total_other 	= $row->other2_1;
+				}
+			}
+			else{
+				$other 			= $other - $other1;
+				$total_other 	= $row->other1_1;
+				if($opqty==0){
+					$other 			= $other1;
+					$total_other 	= $row->other1_1;
+				}
+			}
+
+			$final_open  = $final_open  - $other;
+
+			if($final_open==0){
+				continue;
+			}
 			
-			$total_other = 0;
+			
+			/*$total_other = 0;
 			if($row->other1_1=="")
 			{
 				$row->other1_1 = 0;
@@ -1210,20 +1218,10 @@ class Excel_Model extends CI_Model
 			if($row->other2_1=="")
 			{
 				$row->other2_1 = 0;
-			}
-			
-			$other = 0;			
-			if($other2!=0)
-			{		
-				$other 			= $other1 - $other2;
-				$total_other 	= $row->other1_1;
-			}
-			else{
-				$other 			= 0 - $other1;
-				$total_other 	= 0 - $row->other1_1;
-			}
+			}*/
 			
 			
+			/*
 			$final_open  = $TempOpqty - ($open_b);
 			$final_close = $TempOpqty;
 			
@@ -1260,16 +1258,18 @@ class Excel_Model extends CI_Model
 			$total_opening = $final_open  * $row->costrate;
 			$total_closing = $final_close * $row->costrate;
 			
-			$final_ans = ($final_close + ($purchase - $purchase_return)) - ($sale - $sale_return) + ($other);
+			$final_ans = ($final_close + ($purchase - $purchase_return)) - ($sale - $sale_return) + ($other);*/
 			
 
 			$return.= "<tr>";
-				$return.= "<td>$row->name</td>";
+				$return.= "<td>$row->name -- $row->code</td>";
 				$return.= "<td>$row->pack</td>";
 				$return.= "<td>$final_open</td>";
 				$return.= "<td>$purchase</td>";
+				$return.= "<td>$purchase_free</td>";
 				$return.= "<td>$purchase_return</td>";
 				$return.= "<td>$sale</td>";
+				$return.= "<td>$sale_free</td>";
 				$return.= "<td>$sale_return</td>";
 				$return.= "<td>$other</td>";
 				$return.= "<td>$final_close</td>";
